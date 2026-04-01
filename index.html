@@ -1,187 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MIT - Massachusetts Institute of Technology</title>
-  <link rel="stylesheet" href="mit-style.css" />
+  <title>MIT — Massachusetts Institute of Technology</title>
+  <link rel="stylesheet" href="mit-style.css"/>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="header-top">
-      <a href="#">Students</a>
-      <a href="#">Faculty</a>
-      <a href="#">Staff</a>
-      <a href="#">Alumni</a>
-    </div>
-    <div class="header-main">
-      <a href="#" class="logo">
-        <span class="logo-text">MIT</span>
-      </a>
-      <input type="text" id="search-input" placeholder="Search MIT..." style="max-width:260px; margin:0;" />
-    </div>
-  </header>
+<!-- Custom Cursor -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
 
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<!-- Particle Canvas -->
+<canvas id="particle-canvas"></canvas>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Mind and Hand</h1>
-      <p>MIT is dedicated to advancing knowledge and educating students in science, technology, and other areas that will best serve the nation and the world in the 21st century.</p>
-      <a href="#about" class="btn btn-primary">Explore MIT</a>
-      &nbsp;
-      <a href="#research" class="btn btn-outline">Our Research</a>
-    </div>
-  </section>
+<!-- Page Loader -->
+<div id="loader">
+  <div class="loader-logo">MIT</div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+</div>
 
-  <div class="accent-bar"></div>
+<!-- Search Overlay -->
+<div class="search-overlay" id="search-overlay">
+  <div class="search-box">
+    <input class="search-input-big" id="search-big" type="text" placeholder="Search MIT..."/>
+    <p style="color:rgba(255,255,255,0.3); font-size:0.8rem; margin-top:1rem; font-family:'JetBrains Mono',monospace;">Press ESC to close</p>
+  </div>
+  <button class="search-close" id="search-close">✕</button>
+</div>
 
-  <!-- About Section -->
-  <section class="section" id="about">
-    <div class="container">
-      <h2 class="section-title">About MIT</h2>
-      <p class="section-subtitle">A world-class research university committed to advancing knowledge.</p>
-      <div class="row">
-        <div class="col">
-          <div class="card">
-            <div class="card-title">🎓 Education</div>
-            <div class="card-body">MIT offers rigorous academic programs across science, engineering, management, arts, and humanities.</div>
-            <div class="card-footer"><a href="#">Learn more →</a></div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-title">🔬 Research</div>
-            <div class="card-body">From quantum computing to climate science, MIT researchers are solving the world's toughest problems.</div>
-            <div class="card-footer"><a href="#">Learn more →</a></div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-title">🌍 Innovation</div>
-            <div class="card-body">MIT alumni have founded over 30,000 companies. MIT's innovation ecosystem is one of the most powerful in the world.</div>
-            <div class="card-footer"><a href="#">Learn more →</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats Section -->
-  <section class="section bg-light" id="research">
-    <div class="container text-center">
-      <h2 class="section-title">MIT by the Numbers</h2>
-      <div class="row" style="margin-top:2rem;">
-        <div class="col"><h2 class="text-red" id="stat-nobel">0</h2><p>Nobel Laureates</p></div>
-        <div class="col"><h2 class="text-red" id="stat-patents">0</h2><p>Patents Issued</p></div>
-        <div class="col"><h2 class="text-red" id="stat-faculty">0</h2><p>Faculty Members</p></div>
-        <div class="col"><h2 class="text-red" id="stat-students">0</h2><p>Students Enrolled</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- News Section -->
-  <section class="section" id="news">
-    <div class="container">
-      <h2 class="section-title">Latest News</h2>
-      <ul class="news-list" id="news-list">
-        <li class="news-item">
-          <div>
-            <span class="news-date">Apr 1, 2026</span>
-            <div class="news-title">MIT researchers develop new AI model for climate prediction</div>
-            <div class="news-excerpt">A new deep learning system can predict regional climate patterns up to 10 years in advance.</div>
-          </div>
-        </li>
-        <li class="news-item">
-          <div>
-            <span class="news-date">Mar 28, 2026</span>
-            <div class="news-title">MIT OpenCourseWare celebrates 25 years of free education</div>
-            <div class="news-excerpt">OCW has reached over 300 million learners worldwide since its launch in 2001.</div>
-          </div>
-        </li>
-        <li class="news-item">
-          <div>
-            <span class="news-date">Mar 20, 2026</span>
-            <div class="news-title">New quantum computing lab opens at MIT</div>
-            <div class="news-excerpt">The $50M facility will serve as a hub for collaborative quantum research.</div>
-          </div>
-        </li>
+<!-- Header -->
+<header id="main-header">
+  <div class="header-inner">
+    <a href="#" class="logo">MIT<span>.</span><div class="logo-dot"></div></a>
+    <nav>
+      <ul id="nav-menu">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#stats">Research</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" class="nav-cta" id="search-btn">⌕ Search</a></li>
       </ul>
+    </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- Education Table -->
-  <section class="section bg-light" id="education">
-    <div class="container">
-      <h2 class="section-title">Academic Programs</h2>
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div style="position:relative; z-index:2; width:100%;">
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      Est. 1861 · Cambridge, Massachusetts
+    </div>
+    <h1>
+      MIND<br/>
+      <span class="outline">AND</span><br/>
+      <span class="red">HAND</span>
+    </h1>
+    <div class="hero-typing" id="hero-typing"></div>
+    <p class="hero-sub">Advancing knowledge and educating students in science, technology, and other areas that will best serve the nation and the world.</p>
+    <div class="hero-btns">
+      <a href="#about" class="btn btn-primary">Explore MIT ↗</a>
+      <a href="#programs" class="btn btn-ghost">View Programs</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item">Nobel Laureates <span class="dot">◆</span></span>
+    <span class="marquee-item">97 Nobel Prize Winners <span class="dot">◆</span></span>
+    <span class="marquee-item">Innovation & Research <span class="dot">◆</span></span>
+    <span class="marquee-item">30,000+ Companies Founded <span class="dot">◆</span></span>
+    <span class="marquee-item">MIT OpenCourseWare <span class="dot">◆</span></span>
+    <span class="marquee-item">World #1 University <span class="dot">◆</span></span>
+    <span class="marquee-item">Mens et Manus <span class="dot">◆</span></span>
+    <span class="marquee-item">Nobel Laureates <span class="dot">◆</span></span>
+    <span class="marquee-item">97 Nobel Prize Winners <span class="dot">◆</span></span>
+    <span class="marquee-item">Innovation & Research <span class="dot">◆</span></span>
+    <span class="marquee-item">30,000+ Companies Founded <span class="dot">◆</span></span>
+    <span class="marquee-item">MIT OpenCourseWare <span class="dot">◆</span></span>
+    <span class="marquee-item">World #1 University <span class="dot">◆</span></span>
+    <span class="marquee-item">Mens et Manus <span class="dot">◆</span></span>
+  </div>
+</div>
+
+<!-- About Cards -->
+<section class="section" id="about">
+  <div class="container">
+    <span class="section-tag reveal">// What we do</span>
+    <h2 class="section-title reveal">Shaping the <span class="red">Future</span></h2>
+    <p class="section-lead reveal">A research university committed to solving the world's greatest challenges through science, technology, and human ingenuity.</p>
+    <div class="cards-grid">
+      <div class="card reveal reveal-delay-1">
+        <span class="card-icon">🎓</span>
+        <div class="card-title">Education</div>
+        <div class="card-body">Rigorous programs across 30+ departments in science, engineering, management, arts, and humanities — preparing problem-solvers for a complex world.</div>
+        <a href="#" class="card-link">Learn more →</a>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <span class="card-icon">🔬</span>
+        <div class="card-title">Research</div>
+        <div class="card-body">From quantum computing to climate science and AI, MIT's labs are advancing humanity. Over $2B in sponsored research annually.</div>
+        <a href="#" class="card-link">Explore labs →</a>
+      </div>
+      <div class="card reveal reveal-delay-3">
+        <span class="card-icon">🌍</span>
+        <div class="card-title">Innovation</div>
+        <div class="card-body">MIT alumni have founded over 30,000 active companies, generating $1.9 trillion in annual revenue and employing 4.6 million people worldwide.</div>
+        <a href="#" class="card-link">See impact →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Stats -->
+<section class="section" id="stats">
+  <div class="container">
+    <span class="section-tag reveal">// By the numbers</span>
+    <h2 class="section-title reveal">MIT <span class="red">Impact</span></h2>
+    <p class="section-lead reveal">Decades of world-changing research, education, and innovation — quantified.</p>
+    <div class="stats-grid reveal">
+      <div class="stat-item">
+        <span class="stat-number" id="stat-nobel">0</span>
+        <span class="stat-label">Nobel Laureates</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" id="stat-companies">0</span>
+        <span class="stat-label">Alumni Companies</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" id="stat-faculty">0</span>
+        <span class="stat-label">Faculty Members</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" id="stat-students">0</span>
+        <span class="stat-label">Students Enrolled</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- News -->
+<section class="section" id="news">
+  <div class="container">
+    <span class="section-tag reveal">// Latest updates</span>
+    <h2 class="section-title reveal">MIT <span class="red">News</span></h2>
+    <p class="section-lead reveal">Stay current with breakthroughs and stories from the MIT community.</p>
+    <div class="news-grid reveal">
+      <div class="news-item">
+        <div class="news-date">Apr 01, 2026</div>
+        <div class="news-title">MIT researchers develop AI model that predicts climate shifts a decade ahead</div>
+        <span class="news-tag">AI</span>
+      </div>
+      <div class="news-item">
+        <div class="news-date">Mar 28, 2026</div>
+        <div class="news-title">MIT OpenCourseWare celebrates 25 years — now serving 300M+ learners</div>
+        <span class="news-tag">Education</span>
+      </div>
+      <div class="news-item">
+        <div class="news-date">Mar 20, 2026</div>
+        <div class="news-title">New $50M quantum computing facility opens at MIT campus</div>
+        <span class="news-tag">Quantum</span>
+      </div>
+      <div class="news-item">
+        <div class="news-date">Mar 12, 2026</div>
+        <div class="news-title">MIT spinout raises $200M to commercialize fusion energy technology</div>
+        <span class="news-tag">Energy</span>
+      </div>
+      <div class="news-item">
+        <div class="news-date">Mar 5, 2026</div>
+        <div class="news-title">Professor wins Turing Award for foundational work in cryptography</div>
+        <span class="news-tag">Award</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Programs Table -->
+<section class="section" id="programs">
+  <div class="container">
+    <span class="section-tag reveal">// Academics</span>
+    <h2 class="section-title reveal">Academic <span class="red">Schools</span></h2>
+    <p class="section-lead reveal">Five schools, 30+ departments, and hundreds of programs designed to challenge and inspire.</p>
+    <div class="table-wrap reveal">
       <table>
         <thead>
           <tr>
             <th>School</th>
             <th>Departments</th>
-            <th>Degrees Offered</th>
-            <th>Focus Area</th>
+            <th>Degrees</th>
+            <th>Focus Areas</th>
           </tr>
         </thead>
-        <tbody>
-          <tr><td>School of Engineering</td><td>16</td><td>BS, MS, PhD</td><td>Aerospace, Civil, Electrical, Mechanical</td></tr>
-          <tr><td>School of Science</td><td>6</td><td>BS, MS, PhD</td><td>Biology, Chemistry, Math, Physics</td></tr>
-          <tr><td>Sloan School of Management</td><td>4</td><td>MBA, PhD</td><td>Finance, Entrepreneurship, Analytics</td></tr>
-          <tr><td>School of Architecture & Planning</td><td>4</td><td>BS, MS, PhD</td><td>Urban Studies, Media Arts, Architecture</td></tr>
-          <tr><td>School of Humanities</td><td>5</td><td>BS, PhD</td><td>Economics, History, Linguistics</td></tr>
+        <tbody id="programs-table">
+          <tr><td>School of Engineering</td><td>16</td><td>BS · MS · PhD</td><td>Aerospace, Civil, Electrical, Mechanical, Chemical</td></tr>
+          <tr><td>School of Science</td><td>6</td><td>BS · MS · PhD</td><td>Biology, Chemistry, Mathematics, Physics, Brain Sciences</td></tr>
+          <tr><td>Sloan School of Management</td><td>4</td><td>MBA · PhD · EMBA</td><td>Finance, Entrepreneurship, Analytics, Operations</td></tr>
+          <tr><td>School of Architecture & Planning</td><td>4</td><td>BS · MS · PhD · MArch</td><td>Urban Studies, Media Arts, Architecture, Real Estate</td></tr>
+          <tr><td>School of Humanities</td><td>5</td><td>BS · PhD</td><td>Economics, History, Linguistics, Philosophy, Music</td></tr>
         </tbody>
       </table>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Contact Section -->
-  <section class="section" id="contact">
-    <div class="container" style="max-width:600px;">
-      <h2 class="section-title">Contact Us</h2>
-      <form id="contact-form">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" placeholder="Your name" />
-        <label for="email">Email Address</label>
-        <input type="email" id="email" placeholder="your@email.com" />
-        <label for="message">Message</label>
-        <textarea id="message" rows="5" placeholder="Your message..."></textarea>
-        <button type="submit" class="btn btn-primary" onclick="handleForm(event)">Send Message</button>
-      </form>
-      <div id="form-msg" style="margin-top:1rem; display:none;" class="text-red font-bold"></div>
+<div class="divider"></div>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;">
+      <div>
+        <span class="section-tag reveal">// Get in touch</span>
+        <h2 class="section-title reveal">Contact <span class="red">MIT</span></h2>
+        <p class="section-lead reveal" style="margin-bottom:2rem;">We welcome inquiries from students, researchers, industry partners, and the public.</p>
+        <div style="display:flex;flex-direction:column;gap:1.5rem;" class="reveal">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.3rem;">Address</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.9rem;">77 Massachusetts Ave<br/>Cambridge, MA 02139, USA</div>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.3rem;">Phone</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.9rem;">+1 (617) 253-1000</div>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.3rem;">Email</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.9rem;">admissions@mit.edu</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <form id="contact-form">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="f-name" placeholder="Your full name"/>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="f-email" placeholder="your@email.com"/>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select id="f-subject">
+              <option value="">Select subject...</option>
+              <option>Admissions Inquiry</option>
+              <option>Research Collaboration</option>
+              <option>Media / Press</option>
+              <option>General Information</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="f-message" placeholder="Your message..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send Message →</button>
+          <div class="form-msg" id="form-msg"></div>
+        </form>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
+<!-- Footer -->
+<footer>
+  <div class="container">
     <div class="footer-grid">
-      <div class="footer-brand">
-        <span class="logo-text">MIT</span>
-        <p>Massachusetts Institute of Technology<br/>77 Massachusetts Ave, Cambridge, MA 02139</p>
+      <div>
+        <span class="footer-brand-text">MI<span>T</span></span>
+        <p class="footer-desc">Massachusetts Institute of Technology — advancing knowledge and educating students since 1861.</p>
       </div>
       <div class="footer-col">
-        <h4>Academics</h4>
+        <h5>Academics</h5>
         <ul>
           <li><a href="#">Undergraduate</a></li>
           <li><a href="#">Graduate</a></li>
           <li><a href="#">Online Learning</a></li>
-          <li><a href="#">Executive Education</a></li>
+          <li><a href="#">Executive Ed</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Research</h4>
+        <h5>Research</h5>
         <ul>
           <li><a href="#">Labs & Centers</a></li>
           <li><a href="#">Research News</a></li>
@@ -190,25 +308,22 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Quick Links</h4>
+        <h5>Community</h5>
         <ul>
           <li><a href="#">Apply Now</a></li>
           <li><a href="#">Campus Map</a></li>
           <li><a href="#">Libraries</a></li>
-          <li><a href="#">MIT OpenCourseWare</a></li>
+          <li><a href="#">OpenCourseWare</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Massachusetts Institute of Technology</span>
-      <span>
-        <a href="#">Privacy</a> &nbsp;|&nbsp;
-        <a href="#">Accessibility</a> &nbsp;|&nbsp;
-        <a href="#">Terms</a>
-      </span>
+      <span><a href="#">Privacy</a> · <a href="#">Accessibility</a> · <a href="#">Terms</a></span>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
