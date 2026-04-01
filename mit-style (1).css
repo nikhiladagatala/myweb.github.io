@@ -1,0 +1,641 @@
+/* =============================================
+   MIT-Inspired Stylesheet
+   Based on MIT (Massachusetts Institute of Technology)
+   Website Design System — mit.edu
+   ============================================= */
+
+/* ---- CSS Variables (MIT Design Tokens) ---- */
+:root {
+  --mit-red: #A31F34;
+  --mit-dark-red: #8a1a2b;
+  --mit-black: #000000;
+  --mit-white: #ffffff;
+  --mit-light-gray: #f2f2f2;
+  --mit-mid-gray: #c2c0bf;
+  --mit-dark-gray: #333333;
+  --mit-text-gray: #555555;
+  --mit-border: #dddddd;
+  --mit-link: #A31F34;
+  --mit-link-hover: #8a1a2b;
+  --mit-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --mit-serif: Georgia, 'Times New Roman', serif;
+  --mit-mono: 'Courier New', Courier, monospace;
+  --max-width: 1200px;
+}
+
+/* ---- Reset & Base ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--mit-font);
+  color: var(--mit-dark-gray);
+  background-color: var(--mit-white);
+  line-height: 1.6;
+}
+
+/* ---- Typography ---- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--mit-font);
+  font-weight: 700;
+  color: var(--mit-black);
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.875rem; }
+
+p {
+  margin-bottom: 1em;
+  color: var(--mit-text-gray);
+  font-size: 1rem;
+}
+
+a {
+  color: var(--mit-link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--mit-link-hover);
+  text-decoration: underline;
+}
+
+strong, b { font-weight: 700; }
+em, i { font-style: italic; }
+
+small { font-size: 0.875rem; }
+
+blockquote {
+  border-left: 4px solid var(--mit-red);
+  padding: 1em 1.5em;
+  margin: 1.5em 0;
+  background: var(--mit-light-gray);
+  font-style: italic;
+  color: var(--mit-text-gray);
+}
+
+code, pre {
+  font-family: var(--mit-mono);
+  background: var(--mit-light-gray);
+  border-radius: 3px;
+}
+
+code {
+  padding: 2px 6px;
+  font-size: 0.9em;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--mit-border);
+  margin: 2em 0;
+}
+
+/* ---- Layout ---- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.col {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* ---- Header ---- */
+header {
+  background-color: var(--mit-black);
+  color: var(--mit-white);
+  padding: 0;
+}
+
+.header-top {
+  background-color: var(--mit-red);
+  padding: 0.4rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+}
+
+.header-top a {
+  color: var(--mit-white);
+  font-size: 0.8rem;
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.logo-text {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--mit-white);
+  letter-spacing: -1px;
+}
+
+.logo-text span {
+  color: var(--mit-red);
+}
+
+/* ---- Navigation ---- */
+nav {
+  background-color: var(--mit-black);
+  border-top: 1px solid #222;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  flex-wrap: wrap;
+}
+
+nav ul li a {
+  display: block;
+  color: var(--mit-white);
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: var(--mit-red);
+  color: var(--mit-white);
+  text-decoration: none;
+}
+
+/* ---- Hero Banner ---- */
+.hero {
+  background-color: var(--mit-black);
+  color: var(--mit-white);
+  padding: 5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--mit-red) 0%, var(--mit-black) 60%);
+  opacity: 0.85;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: var(--mit-white);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 2rem;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--mit-red);
+  color: var(--mit-white);
+  border-color: var(--mit-red);
+}
+
+.btn-primary:hover {
+  background-color: var(--mit-dark-red);
+  border-color: var(--mit-dark-red);
+  color: var(--mit-white);
+  text-decoration: none;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--mit-white);
+  border-color: var(--mit-white);
+}
+
+.btn-outline:hover {
+  background-color: var(--mit-white);
+  color: var(--mit-black);
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background-color: var(--mit-dark-gray);
+  color: var(--mit-white);
+  border-color: var(--mit-dark-gray);
+}
+
+.btn-secondary:hover {
+  background-color: var(--mit-black);
+  border-color: var(--mit-black);
+  color: var(--mit-white);
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--mit-white);
+  border: 1px solid var(--mit-border);
+  border-top: 4px solid var(--mit-red);
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--mit-black);
+  margin-bottom: 0.5rem;
+}
+
+.card-body {
+  color: var(--mit-text-gray);
+  font-size: 0.95rem;
+}
+
+.card-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--mit-border);
+  font-size: 0.85rem;
+  color: var(--mit-mid-gray);
+}
+
+/* ---- Section Titles ---- */
+.section {
+  padding: 4rem 1.5rem;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--mit-black);
+  border-bottom: 3px solid var(--mit-red);
+  display: inline-block;
+  padding-bottom: 0.25rem;
+  margin-bottom: 2rem;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--mit-text-gray);
+  margin-top: -1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* ---- News / Article List ---- */
+.news-list {
+  list-style: none;
+}
+
+.news-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--mit-border);
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-date {
+  font-size: 0.8rem;
+  color: var(--mit-red);
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+  min-width: 90px;
+}
+
+.news-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--mit-black);
+}
+
+.news-excerpt {
+  font-size: 0.9rem;
+  color: var(--mit-text-gray);
+  margin-top: 0.25rem;
+}
+
+/* ---- Red Accent Bar ---- */
+.accent-bar {
+  height: 4px;
+  background-color: var(--mit-red);
+  width: 100%;
+}
+
+/* ---- Tag / Badge ---- */
+.tag {
+  display: inline-block;
+  background-color: var(--mit-red);
+  color: var(--mit-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  margin-right: 4px;
+}
+
+.tag-outline {
+  background-color: transparent;
+  border: 1px solid var(--mit-red);
+  color: var(--mit-red);
+}
+
+/* ---- Forms ---- */
+input, textarea, select {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  font-size: 1rem;
+  font-family: var(--mit-font);
+  border: 1px solid var(--mit-mid-gray);
+  border-radius: 2px;
+  background-color: var(--mit-white);
+  color: var(--mit-dark-gray);
+  transition: border-color 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--mit-red);
+  box-shadow: 0 0 0 3px rgba(163, 31, 52, 0.15);
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--mit-dark-gray);
+}
+
+/* ---- Table ---- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+thead {
+  background-color: var(--mit-black);
+  color: var(--mit-white);
+}
+
+thead th {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--mit-border);
+  transition: background-color 0.15s ease;
+}
+
+tbody tr:hover {
+  background-color: var(--mit-light-gray);
+}
+
+tbody td {
+  padding: 0.8rem 1rem;
+}
+
+/* ---- Footer ---- */
+footer {
+  background-color: var(--mit-black);
+  color: var(--mit-white);
+  padding: 3rem 1.5rem 1.5rem;
+  margin-top: 4rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto 2rem;
+}
+
+.footer-brand .logo-text {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.footer-brand p {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+}
+
+.footer-col h4 {
+  color: var(--mit-white);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding-bottom: 0.5rem;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.4rem;
+}
+
+.footer-col ul li a {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+  color: var(--mit-white);
+  text-decoration: none;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+}
+
+.footer-bottom a {
+  color: rgba(255,255,255,0.6);
+}
+
+.footer-bottom a:hover {
+  color: var(--mit-white);
+}
+
+/* ---- Utility Classes ---- */
+.text-red   { color: var(--mit-red); }
+.text-black { color: var(--mit-black); }
+.text-white { color: var(--mit-white); }
+.text-gray  { color: var(--mit-text-gray); }
+
+.bg-red     { background-color: var(--mit-red); }
+.bg-black   { background-color: var(--mit-black); }
+.bg-light   { background-color: var(--mit-light-gray); }
+
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.text-left   { text-align: left; }
+
+.font-bold   { font-weight: 700; }
+.font-normal { font-weight: 400; }
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 1.5rem; }
+.p-4 { padding: 2rem; }
+
+.d-flex { display: flex; }
+.align-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-1 { gap: 0.5rem; }
+.gap-2 { gap: 1rem; }
+
+.hidden { display: none; }
+.w-100  { width: 100%; }
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+
+  .hero h1 { font-size: 2rem; }
+  .hero p  { font-size: 1rem; }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li a {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #222;
+  }
+
+  .header-main {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .row { flex-direction: column; }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 2.5rem 1rem; }
+  .container { padding: 0 1rem; }
+}
